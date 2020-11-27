@@ -1,0 +1,42 @@
+<app-header
+  [showSignUp]="true"
+  [showExplore]="false"
+  [showProfile]="false"
+  [showLogin]="false"
+  [showLogout]="false"
+  [showProfile]="true"
+></app-header>
+<div class="applications_table">
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th style="width: 40%">Name</th>
+        <th style="width: 25%">Created At</th>
+        <th style="width: 25%">Last Updated At</th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let application of applications">
+        <td>{{ application.name }}</td>
+        <td>{{ application.createdAt | date: "mediumDate" }}</td>
+        <td>{{ application.updatedAt | date: "mediumDate" }}</td>
+        <td style="text-align: center">
+          <a
+            class="waves-effect waves-light btn edit_btn"
+            id="delete_{{ application._id }}"
+            (click)="deleteResource($event)"
+          >
+            <i class="material-icons">delete</i></a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<a
+  class="btn-floating btn-large waves-effect waves-light"
+  style="background: #136a8a; position: fixed; bottom: 3rem; right: 3rem"
+  ><i class="material-icons">add</i></a
+>

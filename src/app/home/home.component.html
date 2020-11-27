@@ -1,0 +1,154 @@
+<app-header
+  [showSignUp]="true"
+  [showExplore]="false"
+  [showProfile]="false"
+  [showLogin]="false"
+  [showLogout]="false"
+  [showProfile]="true"
+></app-header>
+<div class="login">
+  <ul class="tabs">
+    <li class="tab"><a class="active" href="#login">Login</a></li>
+    <li class="tab"><a href="#register"> Register</a></li>
+  </ul>
+
+  <div id="login" class="col s12">
+    <div style="padding-top: 15%">
+      <div
+        class="row"
+        style="
+          padding-left: 15%;
+          padding-right: 15%;
+          padding-top: 10%;
+          margin-bottom: 0%;
+        "
+      >
+        <div class="input-field col s12">
+          <input
+            id="email"
+            [(ngModel)]="email"
+            required
+            type="email"
+            class="validate"
+          />
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="padding-left: 15%; padding-right: 15%; margin-bottom: 0%"
+      >
+        <div class="input-field col s12">
+          <input
+            id="password"
+            [(ngModel)]="password"
+            required
+            type="password"
+            class="validate"
+          />
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="padding-left: 17%; padding-right: 17%; margin-bottom: 0%"
+      >
+        <a
+          class="waves-effect waves-light btn-large"
+          style="
+            background: #267871;
+            margin-top: 10%;
+            width: -webkit-fill-available;
+          "
+          (click)="login()"
+          >Log In</a
+        >
+      </div>
+    </div>
+  </div>
+  <div id="register" class="col s12">
+    <div style="padding-top: 15%">
+      <div
+        class="row"
+        style="padding-left: 15%; padding-right: 15%; margin-bottom: 0%"
+      >
+        <div class="input-field col s12">
+          <input
+            id="newName"
+            [(ngModel)]="newName"
+            required
+            type="email"
+            class="validate"
+          />
+          <label for="newName">Name</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="padding-left: 15%; padding-right: 15%; margin-bottom: 0%"
+      >
+        <div class="input-field col s12">
+          <input
+            id="newEmail"
+            [(ngModel)]="newEmail"
+            required
+            type="email"
+            class="validate"
+          />
+          <label for="newEmail">Email</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="padding-left: 15%; padding-right: 15%; margin-bottom: 0%"
+      >
+        <div class="input-field col s12">
+          <input
+            id="newPassword"
+            [(ngModel)]="newPassword"
+            required
+            type="password"
+            class="validate"
+          />
+          <label for="newPassword">Password</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="padding-left: 15%; padding-right: 15%; margin-bottom: 0%"
+      >
+        <div class="input-field col s12">
+          <input
+            id="newPassword2"
+            [(ngModel)]="newPassword2"
+            required
+            type="password"
+            class="validate"
+          />
+          <label for="newPassword2">Re-type Password</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="padding-left: 17%; padding-right: 17%; margin-bottom: 0%"
+      >
+        <a
+          class="waves-effect waves-light btn-large"
+          style="
+            background: #267871;
+            margin-top: 10%;
+            width: -webkit-fill-available;
+          "
+          (click)="register()"
+          >Register</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

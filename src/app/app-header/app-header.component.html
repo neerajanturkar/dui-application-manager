@@ -1,0 +1,19 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo left">DUI Application Manager</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li [hidden]="!showDashboard">
+        <a (click)="goToAdminDashboard()">Dashboard</a>
+      </li>
+      <li [hidden]="!showProfile">
+        <a (click)="goToEditProfile()">Your Profile</a>
+      </li>
+      <li [hidden]="!showExplore"><a (click)="goToExplore()">Explore</a></li>
+      <li [hidden]="!showSignUp">
+        <a (click)="goToSignup()">Create an Account</a>
+      </li>
+      <li [hidden]="!showLogout" (click)="logout()"><a>Logout</a></li>
+      <li [hidden]="!showLogin"><a (click)="goToHome()">Login</a></li>
+    </ul>
+  </div>
+</nav>
