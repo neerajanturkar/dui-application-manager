@@ -1,0 +1,32 @@
+.applications_table {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.application_tabel_label {
+  text-align: right;
+  font-weight: bold;
+}
+.back_btn {
+  background: transparent;
+  color: black;
+  box-shadow: 0 0 black;
+  display: inline-flex;
+}
+.section {
+  margin-left: 1rem;
+}
+.edit_btn {
+  background: transparent;
+  color: black;
+  box-shadow: 0 0 black;
+}
+
+h3 {
+  color: black;
+  font-weight: lighter;
+  font-size: x-large;
+}
+td,
+th {
+  padding: 5px 5px;
+}

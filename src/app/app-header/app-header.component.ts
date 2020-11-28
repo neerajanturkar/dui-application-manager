@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -6,7 +7,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./app-header.component.css"],
 })
 export class AppHeaderComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+  constructor(public router: Router) {}
+  showLogout: Boolean;
+  ngOnInit() {
+    const token = localStorage.getItem("token");
+    this.showLogout = token ? true : false;
+  }
+  logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.router.navigate(["/home"]);
+  }
 }

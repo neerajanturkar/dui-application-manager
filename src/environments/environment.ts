@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   serverHostName: "http://localhost",
+  serverPort: "5000",
 };
 
 /*

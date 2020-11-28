@@ -6,12 +6,15 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
   userLogin(loginData: any) {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
     return this.http
       .post(
-        environment.serverHostName + ":5000/api/v1/user/login",
+        environment.serverHostName +
+          ":" +
+          environment.serverPort +
+          "/api/v1/user/login",
         JSON.stringify(loginData),
         { headers: headers }
       )
@@ -21,7 +24,10 @@ export class AuthenticationService {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
     return this.http
       .post(
-        environment.serverHostName + ":5000/api/v1/user/signup",
+        environment.serverHostName +
+          ":" +
+          environment.serverPort +
+          "/api/v1/user/signup",
         JSON.stringify(signupData),
         { headers: headers }
       )

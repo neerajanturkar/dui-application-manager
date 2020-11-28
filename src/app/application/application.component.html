@@ -25,10 +25,10 @@
         <td style="text-align: center">
           <a
             class="waves-effect waves-light btn edit_btn"
-            id="delete_{{ application._id }}"
-            (click)="deleteResource($event)"
+            id="view_{{ application._id }}"
+            (click)="viewApplication($event)"
           >
-            <i class="material-icons">delete</i></a
+            <i class="material-icons">navigate_next</i></a
           >
         </td>
       </tr>
@@ -38,5 +38,6 @@
 <a
   class="btn-floating btn-large waves-effect waves-light"
   style="background: #136a8a; position: fixed; bottom: 3rem; right: 3rem"
+  (click)="createNewApplication($event)"
   ><i class="material-icons">add</i></a
 >

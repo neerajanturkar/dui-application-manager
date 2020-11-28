@@ -1,0 +1,33 @@
+.section {
+  margin-left: 1rem;
+}
+.applications_table {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.application_tabel_label {
+  text-align: right;
+  font-weight: bold;
+}
+.back_btn {
+  background: transparent;
+  color: black;
+  box-shadow: 0 0 black;
+  display: inline-flex;
+}
+h3 {
+  color: black;
+  font-weight: lighter;
+  font-size: x-large;
+}
+td,
+th {
+  padding: 10px 5px;
+}
+
+.btn-large {
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  padding: -1px 28px !important;
+}

@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="section">
+  <a (click)="navigateBack()" class="waves-effect waves-light back_btn"
+    ><i class="material-icons">navigate_before</i>
+    <span>Back to Application</span></a
+  >
+  <h3>UI Profile Overview</h3>
+</div>
+<div class="applications_table">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th style="width: 20%"></th>
+        <th style="width: 40%"></th>
+        <th style="width: 10%"></th>
+        <th style="width: 10%"></th>
+        <th style="width: 20%"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="application_tabel_label">UI Profile Name :</td>
+        <td>{{ uiProfile.name }}</td>
+        <td></td>
+        <td class="application_tabel_label">Created At :</td>
+        <td>{{ uiProfile.createdAt | date: "mediumDate" }}</td>
+      </tr>
+      <tr>
+        <td class="application_tabel_label">Application Id :</td>
+        <td>{{ uiProfile._id }}</td>
+        <td></td>
+        <td class="application_tabel_label">Updated At :</td>
+        <td>{{ uiProfile.updatedAt | date: "mediumDate" }}</td>
+      </tr>
+    </tbody>
+    <tr>
+      <td class="application_tabel_label">Type :</td>
+
+      <td>
+        <select
+          (change)="onStatusChange($event)"
+          style="display: block; width: 50%"
+          [(ngModel)]="uiProfile.type"
+        >
+          <option value="web">Web Application</option>
+          <option value="mobile">Mobile Application</option>
+        </select>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="application_tabel_label">URL :</td>
+      <td><input type="text" [(ngModel)]="uiProfile.url" /></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+<a
+  style="height: 40px; line-height: 40px; font-size: 15px; padding: -1px 28px"
+  class="btn-large waves-effect waves-light"
+  style="background: #136a8a; position: fixed; bottom: 3rem; right: 3rem"
+  (click)="createNewApplication($event)"
+  >Save</a
+>

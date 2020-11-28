@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="section">
+  <a (click)="navigateBack()" class="waves-effect waves-light back_btn"
+    ><i class="material-icons">navigate_before</i>
+    <span>Back to Applications</span></a
+  >
+  <h3>Application Overview</h3>
+</div>
+<div class="applications_table">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th style="width: 20%"></th>
+        <th style="width: 40%"></th>
+        <th style="width: 10%"></th>
+        <th style="width: 10%"></th>
+        <th style="width: 20%"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="application_tabel_label">Application Name :</td>
+        <td>{{ application.name }}</td>
+        <td></td>
+        <td class="application_tabel_label">Created At :</td>
+        <td>{{ application.createdAt | date: "mediumDate" }}</td>
+      </tr>
+      <tr>
+        <td class="application_tabel_label">Application Id :</td>
+        <td>{{ application._id }}</td>
+        <td></td>
+        <td class="application_tabel_label">Updated At :</td>
+        <td>{{ application.updatedAt | date: "mediumDate" }}</td>
+      </tr>
+    </tbody>
+    <tr>
+      <td class="application_tabel_label">Application Secret :</td>
+      <td>{{ application.secret }}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+<div class="section">
+  <h3>UI Profiles</h3>
+</div>
+<div class="applications_table">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%">Name</th>
+        <th style="width: 16%">Type</th>
+        <th style="width: 16%">Default</th>
+        <th style="width: 16%">Created At</th>
+        <th style="width: 16%">Updated At</th>
+        <th style="width: 6%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let uiProfile of uiProfiles">
+        <td>{{ uiProfile.name }}</td>
+        <td>{{ uiProfile.type | uiProfilePipe }}</td>
+        <td>{{ uiProfile.default | booleanPipe }}</td>
+
+        <td>{{ uiProfile.createdAt | date: "mediumDate" }}</td>
+        <td>{{ uiProfile.updatedAt | date: "mediumDate" }}</td>
+        <td style="text-align: center">
+          <a
+            class="waves-effect waves-light btn edit_btn"
+            id="view_{{ uiProfile._id }}"
+            (click)="viewUiProfile($event)"
+          >
+            <i class="material-icons">navigate_next</i></a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<a
+  class="btn-floating btn-large waves-effect waves-light"
+  style="background: #136a8a; position: fixed; bottom: 3rem; right: 3rem"
+  (click)="createNewApplication($event)"
+  ><i class="material-icons">add</i></a
+>
