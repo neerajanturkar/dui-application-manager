@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApplicationService } from "../application.service";
-import { v4 as uuidv4 } from "uuid";
 @Component({
   selector: "app-application",
   templateUrl: "./application.component.html",
@@ -36,7 +35,7 @@ export class ApplicationComponent implements OnInit {
   confirmCreateNewApplication() {
     let data = {
       name: this.newApplicationName,
-      secret: uuidv4(),
+      secret: btoa(this.newApplicationName),
     };
     this.applicationService
       .createNewApplication(data, localStorage.getItem("token"))

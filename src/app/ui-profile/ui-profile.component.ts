@@ -76,7 +76,7 @@ export class UiProfileComponent implements OnInit {
     if (this.profileModalType === "BOOLEAN") {
       const value = document.querySelector(
         'input[name="defaultBoolean"]:checked'
-      ).value;
+      )["value"];
       this.profileModalDefault = value === "true" ? true : false;
       console.log(value);
     } else if (this.profileModalType === "INTEGER") {

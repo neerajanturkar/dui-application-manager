@@ -38,11 +38,7 @@
       <td class="application_tabel_label">Type :</td>
 
       <td>
-        <select
-          (change)="onStatusChange($event)"
-          style="display: block; width: 50%"
-          [(ngModel)]="uiProfile.type"
-        >
+        <select style="display: block; width: 50%" [(ngModel)]="uiProfile.type">
           <option value="web">Web Application</option>
           <option value="mobile">Mobile Application</option>
         </select>

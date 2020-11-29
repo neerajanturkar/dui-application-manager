@@ -60,21 +60,6 @@ export class ApplicationDetailComponent implements OnInit {
     this.newUIProfileType = "web";
     this.showURL = true;
     this.newUIProfileModal.open();
-    const data = {
-      applicationId: this.id,
-      url: this.newUIProfileURL,
-      default: false,
-      name: this.newUIProfileName,
-      type: this.newUIProfileType,
-    };
-    this.applicationService
-      .createNewUIPRofile(data, localStorage.getItem("token"))
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
   }
   changeUIProfileType() {
     if (this.newUIProfileType === "web") {
