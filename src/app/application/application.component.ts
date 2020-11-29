@@ -42,7 +42,6 @@ export class ApplicationComponent implements OnInit {
       .createNewApplication(data, localStorage.getItem("token"))
       .then((response) => {
         this.router.navigate(["/application/" + response["data"]["_id"]]);
-        console.log(response["data"]["_id"]);
       })
       .catch((e) => {
         console.log(e);

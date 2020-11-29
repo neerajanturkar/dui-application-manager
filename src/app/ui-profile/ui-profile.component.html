@@ -27,7 +27,7 @@
         <td>{{ uiProfile.createdAt | date: "mediumDate" }}</td>
       </tr>
       <tr>
-        <td class="application_tabel_label">Application Id :</td>
+        <td class="application_tabel_label">UI Profile Id :</td>
         <td>{{ uiProfile._id }}</td>
         <td></td>
         <td class="application_tabel_label">Updated At :</td>
@@ -52,8 +52,16 @@
       <td></td>
     </tr>
     <tr>
-      <td class="application_tabel_label">URL :</td>
-      <td><input type="text" [(ngModel)]="uiProfile.url" /></td>
+      <td class="application_tabel_label" *ngIf="uiProfile.type == 'web'">
+        URL :
+      </td>
+      <td>
+        <input
+          type="text"
+          *ngIf="uiProfile.type == 'web'"
+          [(ngModel)]="uiProfile.url"
+        />
+      </td>
       <td></td>
       <td></td>
       <td></td>
@@ -101,7 +109,7 @@
   style="height: 40px; line-height: 40px; font-size: 15px; padding: -1px 28px"
   class="btn-large waves-effect waves-light"
   style="background: #136a8a; position: fixed; bottom: 3rem; right: 3rem"
-  (click)="createNewApplication($event)"
+  (click)="updateUIProfile()"
   >Save</a
 >
 

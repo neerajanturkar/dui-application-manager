@@ -46,4 +46,33 @@ export class ApplicationService {
       .post(url, JSON.stringify(data), { headers: headers })
       .toPromise();
   }
+  createNewUIPRofile(data: any, token: any) {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    });
+    const url =
+      environment.serverHostName +
+      ":" +
+      environment.serverPort +
+      "/api/v1/uiProfile/";
+    return this.http
+      .post(url, JSON.stringify(data), { headers: headers })
+      .toPromise();
+  }
+  updateUIProfile(id: any, data: any, token: any) {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    });
+    const url =
+      environment.serverHostName +
+      ":" +
+      environment.serverPort +
+      "/api/v1/uiProfile/" +
+      id;
+    return this.http
+      .put(url, JSON.stringify(data), { headers: headers })
+      .toPromise();
+  }
 }

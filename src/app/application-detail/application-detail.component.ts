@@ -12,7 +12,12 @@ export class ApplicationDetailComponent implements OnInit {
   application: any;
   uiProfiles: any;
   applicationDetail: any;
-  newApplicationModal: any;
+  newUIProfileModal: any;
+  showURL: any;
+
+  newUIProfileName: any;
+  newUIProfileType: any;
+  newUIProfileURL: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -22,7 +27,7 @@ export class ApplicationDetailComponent implements OnInit {
   async ngOnInit() {
     const token = localStorage.getItem("token");
     const elems = document.querySelector(".modal");
-    this.newApplicationModal = M.Modal.init(elems);
+    this.newUIProfileModal = M.Modal.init(elems);
     if (token) {
       this.id = this.activatedRoute.snapshot.paramMap.get("id");
       console.log(this.id);
@@ -51,5 +56,54 @@ export class ApplicationDetailComponent implements OnInit {
   navigateBack() {
     this.router.navigate(["/application"]);
   }
-  onCreateNewApplicationClick() {}
+  createNewUIProfile() {
+    this.newUIProfileType = "web";
+    this.showURL = true;
+    this.newUIProfileModal.open();
+    const data = {
+      applicationId: this.id,
+      url: this.newUIProfileURL,
+      default: false,
+      name: this.newUIProfileName,
+      type: this.newUIProfileType,
+    };
+    this.applicationService
+      .createNewUIPRofile(data, localStorage.getItem("token"))
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  changeUIProfileType() {
+    if (this.newUIProfileType === "web") {
+      this.showURL = true;
+    } else {
+      this.showURL = false;
+    }
+  }
+  confirmCreateNewUIProfile() {
+    const data = {
+      applicationId: this.id,
+      url: this.newUIProfileURL,
+      default: false,
+      name: this.newUIProfileName,
+      type: this.newUIProfileType,
+    };
+    this.applicationService
+      .createNewUIPRofile(data, localStorage.getItem("token"))
+      .then((response) => {
+        console.log(response);
+        this.router.navigate([
+          "/application/" +
+            response["data"]["applicationId"] +
+            "/uiProfile/" +
+            response["data"]["_id"],
+        ]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 }

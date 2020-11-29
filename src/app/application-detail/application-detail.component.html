@@ -52,7 +52,7 @@
       <tr>
         <th style="width: 30%">Name</th>
         <th style="width: 16%">Type</th>
-        <th style="width: 16%">Default</th>
+
         <th style="width: 16%">Created At</th>
         <th style="width: 16%">Updated At</th>
         <th style="width: 6%"></th>
@@ -62,7 +62,6 @@
       <tr *ngFor="let uiProfile of uiProfiles">
         <td>{{ uiProfile.name }}</td>
         <td>{{ uiProfile.type | uiProfilePipe }}</td>
-        <td>{{ uiProfile.default | booleanPipe }}</td>
 
         <td>{{ uiProfile.createdAt | date: "mediumDate" }}</td>
         <td>{{ uiProfile.updatedAt | date: "mediumDate" }}</td>
@@ -82,6 +81,55 @@
 <a
   class="btn-floating btn-large waves-effect waves-light"
   style="background: #136a8a; position: fixed; bottom: 3rem; right: 3rem"
-  (click)="createNewApplication($event)"
+  (click)="createNewUIProfile($event)"
   ><i class="material-icons">add</i></a
 >
+<div id="modal" class="modal" style="width: 30%">
+  <div class="modal-content">
+    <h3>New UI Profile</h3>
+    <div class="row" style="margin-left: 2%; margin-right: 2%">
+      <label style="width: 92%">
+        <input
+          name="default"
+          type="text"
+          placeholder="Enter UI Profile Name"
+          [(ngModel)]="newUIProfileName"
+        />
+      </label>
+    </div>
+    <div class="rowComponent modal-section">
+      <div class="column" style="margin-top: 3%">
+        <span>Application Type:</span>
+      </div>
+      <div class="column">
+        <select
+          style="display: block"
+          [(ngModel)]="newUIProfileType"
+          (change)="changeUIProfileType()"
+        >
+          <option value="web">Web Application</option>
+          <option value="mobile">Mobile Application</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" style="margin-left: 2%; margin-right: 2%" *ngIf="showURL">
+      <label style="width: 92%">
+        <input
+          name="default"
+          type="text"
+          placeholder="Enter URL"
+          [(ngModel)]="newUIProfileURL"
+        />
+      </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <a
+      (click)="confirmCreateNewUIProfile()"
+      class="modal-close waves-effect waves-green btn-flat"
+      style="background: #136a8a; color: white"
+      >OK</a
+    >
+  </div>
+</div>

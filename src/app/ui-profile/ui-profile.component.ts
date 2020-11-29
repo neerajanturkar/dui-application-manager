@@ -98,4 +98,18 @@ export class UiProfileComponent implements OnInit {
     this.uiProfile.profile.splice(this.elementToDelete, 1);
     console.log(this.uiProfile.profile);
   }
+  updateUIProfile() {
+    this.applicationService
+      .updateUIProfile(
+        this.uiProfileId,
+        this.uiProfile,
+        localStorage.getItem("token")
+      )
+      .then((response) => {
+        toast({ html: "UI Profile updated successfully" });
+      })
+      .catch((e) => {
+        toast({ html: "Update Failed" });
+      });
+  }
 }
