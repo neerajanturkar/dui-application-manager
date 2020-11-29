@@ -12,6 +12,9 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem("token");
     this.showLogout = token ? true : false;
+    const elem = document.querySelector(".sidenav");
+    const options = {};
+    M.Sidenav.init(elem, options);
   }
   logout() {
     localStorage.removeItem("token");

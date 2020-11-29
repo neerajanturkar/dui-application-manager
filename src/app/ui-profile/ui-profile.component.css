@@ -5,6 +5,10 @@
   margin-left: 1rem;
   margin-right: 1rem;
 }
+.profile_table {
+  margin-left: 5%;
+  margin-right: 5%;
+}
 .application_tabel_label {
   text-align: right;
   font-weight: bold;
@@ -14,6 +18,11 @@
   color: black;
   box-shadow: 0 0 black;
   display: inline-flex;
+}
+.edit_btn {
+  background: transparent;
+  color: black;
+  box-shadow: 0 0 black;
 }
 h3 {
   color: black;
@@ -30,4 +39,22 @@ th {
   line-height: 40px;
   font-size: 15px;
   padding: -1px 28px !important;
+}
+.modal-section {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 60%;
+}
+.rowComponent {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
 }

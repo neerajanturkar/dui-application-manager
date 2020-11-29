@@ -32,4 +32,18 @@ export class ApplicationService {
       id;
     return this.http.get(url, { headers: headers }).toPromise();
   }
+  createNewApplication(data: any, token: any) {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    });
+    const url =
+      environment.serverHostName +
+      ":" +
+      environment.serverPort +
+      "/api/v1/application/";
+    return this.http
+      .post(url, JSON.stringify(data), { headers: headers })
+      .toPromise();
+  }
 }

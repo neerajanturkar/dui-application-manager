@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApplicationService } from "../application.service";
+import { toast, Modal } from "materialize-css";
 @Component({
   selector: "app-ui-profile",
   templateUrl: "./ui-profile.component.html",
@@ -9,6 +10,14 @@ import { ApplicationService } from "../application.service";
 export class UiProfileComponent implements OnInit {
   uiProfileId: any;
   uiProfile: any;
+  instance: any;
+  instanceConfrimation: any;
+  profileModalType: any;
+  profileModalName: any;
+  profileModalDefault: any;
+  showRadio: Boolean;
+  showInput: Boolean;
+  elementToDelete: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -16,6 +25,10 @@ export class UiProfileComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    const elems = document.querySelector(".modal");
+    const elemsConfirmation = document.querySelector(".conformation");
+    this.instance = M.Modal.init(elems);
+    this.instanceConfrimation = M.Modal.init(elemsConfirmation);
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -41,5 +54,48 @@ export class UiProfileComponent implements OnInit {
   navigateBack() {
     const id = this.activatedRoute.snapshot.paramMap.get("id");
     this.router.navigate(["/application/" + id]);
+  }
+  createNewUIProfile(event) {
+    this.profileModalType = "BOOLEAN";
+    this.profileModalName = "";
+    this.profileModalDefault = "";
+    this.showRadio = true;
+    this.showInput = false;
+    this.instance.open();
+  }
+  changeInputType() {
+    if (this.profileModalType === "BOOLEAN") {
+      this.showRadio = true;
+      this.showInput = false;
+    } else {
+      this.showRadio = false;
+      this.showInput = true;
+    }
+  }
+  addElementToModel(event) {
+    if (this.profileModalType === "BOOLEAN") {
+      const value = document.querySelector(
+        'input[name="defaultBoolean"]:checked'
+      ).value;
+      this.profileModalDefault = value === "true" ? true : false;
+      console.log(value);
+    } else if (this.profileModalType === "INTEGER") {
+      this.profileModalDefault = parseInt(this.profileModalDefault);
+    }
+    const newElement = {
+      name: this.profileModalName,
+      type: this.profileModalType,
+      default: this.profileModalDefault,
+    };
+    this.uiProfile.profile.push(newElement);
+    console.log(this.uiProfile.profile);
+  }
+  deleteElement(event) {
+    this.instanceConfrimation.open();
+    this.elementToDelete = event.path[1].id;
+  }
+  confirmDelete() {
+    this.uiProfile.profile.splice(this.elementToDelete, 1);
+    console.log(this.uiProfile.profile);
   }
 }

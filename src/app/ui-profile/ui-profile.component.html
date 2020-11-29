@@ -60,7 +60,43 @@
     </tr>
   </table>
 </div>
-
+<div class="section">
+  <h3>UI Profile</h3>
+  <div class="profile_table">
+    <table class="stripped">
+      <thead>
+        <th></th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th style="width: 1%">
+          <a
+            class="btn-small waves-effect waves-light edit_btn"
+            (click)="createNewUIProfile($event)"
+            ><i class="material-icons">add</i></a
+          >
+        </th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profile of uiProfile.profile; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ profile.name }}</td>
+          <td>{{ profile.type }}</td>
+          <td>{{ profile.default }}</td>
+          <td>
+            <a
+              id="{{ i }}"
+              class="btn-small waves-effect waves-light edit_btn"
+              (click)="deleteElement($event)"
+              ><i class="material-icons">delete</i></a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <a
   style="height: 40px; line-height: 40px; font-size: 15px; padding: -1px 28px"
   class="btn-large waves-effect waves-light"
@@ -68,3 +104,82 @@
   (click)="createNewApplication($event)"
   >Save</a
 >
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h3>Add New Element</h3>
+    <div
+      class="row modal-section"
+      style="margin-top: 5rem; margin-left: 6rem; margin-right: 7rem"
+    >
+      <div class="input-field">
+        <input id="name" type="text" [(ngModel)]="profileModalName" />
+        <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="rowComponent modal-section">
+      <div class="column">
+        <select
+          style="display: block"
+          [(ngModel)]="profileModalType"
+          (change)="changeInputType()"
+        >
+          <option value="BOOLEAN">Boolean</option>
+          <option value="INTEGER">Number</option>
+          <option value="TEXT">Text</option>
+        </select>
+      </div>
+      <div class="column">
+        <div class="rowComponent" *ngIf="showRadio">
+          <div class="column">
+            <label>
+              <input name="defaultBoolean" type="radio" value="true" />
+              <span>True</span>
+            </label>
+          </div>
+          <div class="column">
+            <label>
+              <input name="defaultBoolean" type="radio" value="false" />
+              <span>False</span>
+            </label>
+          </div>
+        </div>
+        <div class="rowComponent" *ngIf="showInput">
+          <label style="width: 92%">
+            <input
+              name="default"
+              type="text"
+              placeholder="Default"
+              [(ngModel)]="profileModalDefault"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <a
+      class="modal-close waves-effect waves-green btn-flat"
+      style="background: #136a8a; color: white"
+      (click)="addElementToModel($event)"
+      >OK</a
+    >
+  </div>
+</div>
+<div id="modal2" class="modal conformation" style="width: 30%">
+  <div class="modal-content">
+    <h4>Confirm Delete</h4>
+    <p>Are you sure you want to delete ?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">No</a>
+    <a
+      (click)="confirmDelete()"
+      class="modal-close waves-effect waves-green btn-flat"
+      style="background: #136a8a; color: white"
+      >Yes</a
+    >
+  </div>
+</div>

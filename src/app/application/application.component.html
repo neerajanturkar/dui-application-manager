@@ -41,3 +41,28 @@
   (click)="createNewApplication($event)"
   ><i class="material-icons">add</i></a
 >
+
+<div id="modal" class="modal" style="width: 30%">
+  <div class="modal-content">
+    <h3>New Application</h3>
+    <div class="row">
+      <label style="width: 92%">
+        <input
+          name="default"
+          type="text"
+          placeholder="Enter Application Name"
+          [(ngModel)]="newApplicationName"
+        />
+      </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <a
+      (click)="confirmCreateNewApplication()"
+      class="modal-close waves-effect waves-green btn-flat"
+      style="background: #136a8a; color: white"
+      >OK</a
+    >
+  </div>
+</div>

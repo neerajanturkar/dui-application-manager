@@ -1,6 +1,9 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo left">DUI Application Manager</a>
+    <a href="#!" class="brand-logo">DUI Application Manager</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+      ><i class="material-icons">menu</i></a
+    >
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         <a (click)="goToHelp()">How it Works!</a>
@@ -9,3 +12,9 @@
     </ul>
   </div>
 </nav>
+<ul class="sidenav" id="mobile-demo">
+  <li>
+    <a (click)="goToHelp()">How it Works!</a>
+  </li>
+  <li [hidden]="!showLogout" (click)="logout()"><a>Logout</a></li>
+</ul>
